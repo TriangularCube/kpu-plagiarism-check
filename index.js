@@ -1,13 +1,16 @@
 const http = require( 'http' );
 const express = require( 'express' );
+const path = require( 'path' );
+
 const interfaceRouter = require( './interface/interfaceRouter' );
 
 const app = express();
 
 
 // Use default view engine
-app.set( 'view-engine', 'pug' );
+app.set( 'view engine', 'pug' );
 
+app.set( 'views', [ path.join( __dirname, "interface" ) ] );
 
 // Router
 app.use( '/', interfaceRouter );
