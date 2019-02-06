@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="style.css" rel="stylesheet">
+
+<head>
+
+  <!-- References a Handlebars partial in views/partials/head.handlebars -->
+  {{>head}}
+
+  <title>Plagiarism Detection Tool</title>
+
+</head>
+
+<body>
+
+<!-- References a Handlebars partial in views/partials/bsnavbar.handlebars -->
+  {{>bsnavbar}}
+
+<!-- The HTML for each view goes here -->
+<!-- <div class="container"> -->
+{{{body}}}
+<!-- </div> -->
+
+ <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+
+</body>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+  Holder.addTheme('thumb', {
+    bg: '#55595c',
+    fg: '#eceeef',
+    text: 'Thumbnail'
+  });
+</script>
+
+</html>

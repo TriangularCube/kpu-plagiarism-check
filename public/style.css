@@ -1,0 +1,173 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background-color: #333;
+  color: #FFF;
+}
+
+.line-seperator-left {
+  background-color: #333;
+  text-align: left;
+  padding-left: 5rem;
+  font-weight: 300;
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000,
+  0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000,
+  -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.line-seperator-right {
+  background-color: #333;
+  text-align: right;
+  padding-right: 5rem;
+  font-weight: 300;
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000,
+  0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000,
+  -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+/*-------------------FIRST JUMBO------------------*/
+
+.jumbotron {
+  background-image: url('img/chau.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+}
+
+.jumbotron h1 {
+  color: #FFFFFF;
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000,
+  0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000,
+  -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+}
+
+/*-------------------SECOND JUMBO------------------*/
+
+.jumbotron2 {
+  background-image: url('img/blue.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 0;
+}
+
+.jumbotron2 h1 {
+  color: #FFFFFF;
+}
+
+.jumbotron2 p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron2-heading {
+  font-weight: 300;
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000,
+  0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000,
+  -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.jumbotron2 .container {
+  max-width: 40rem;
+}
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 2rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+.carousel-caption h1{
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000,
+  0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000,
+  -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.carousel-caption p{
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000,
+  0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000,
+  -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+  background-color: #777;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+
+.album {
+  min-height: 25rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  background-color: #333;
+}
+
+.card {
+  float: left;
+  width: 33.333%;
+  padding: .75rem;
+  margin-bottom: 5rem;
+  background-color: #111;
+  border: 1;
+}
+
+.card > img {
+  margin-bottom: .75rem;
+}
+
+.card-text {
+  font-size: 85%;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  z-index: 50;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
