@@ -17,7 +17,7 @@ var common="the, it is, we all, a, an, by, to, you, me, he, she, they, we, how, 
 * @ Output: uncommonArr 
 */
 function getUncommon(filedoc, common) {
-    var wordArr = sentence.match(/\w+/g),
+    var wordArr = filedoc.match(/\w+/g),
         commonObj = {},
         uncommonArr = [],
         word, i;
@@ -34,5 +34,5 @@ function getUncommon(filedoc, common) {
         }
     }
 
-    return uncommonArr; // return the prepared file
+    return uncommonArr; // return the prepared file array.
 }
