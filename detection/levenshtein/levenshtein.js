@@ -1,19 +1,32 @@
-const iterator = require( './documentIterator' );
-const documents = new iterator();
 
+module.exports = function process( inputDoc, targetDoc ){
 
-module.exports = function process( inputPaper ){
+    let score = 0;
 
-    // Input paper should be in Array of Sentences
+    inputDoc.forEach( (element) => {
 
+        let lowestScore = NaN;
 
-    /*while( documents.hasNext() ){
+        targetDoc.forEach( (element2) => {
 
-        // TODO
+            let dist = levenshtein( element, element2 );
 
-    }*/
-	
-	test();
+            if( isNaN( lowestScore ) || dist < lowestScore ){
+                lowestScore = dist;
+            }
+
+        });
+
+        if( isNaN( lowestScore ) ){
+            console.log( `Something went wrong with Levenshtein distance for ${ element }` );
+            return;
+        }
+
+        score += lowestScore;
+
+    });
+
+    return score;
 
 };
 
