@@ -1,4 +1,4 @@
-const iterator = require( './documentIterator' );
+const iterator = require( '../documentIterator' );
 const documents = new iterator();
 
 

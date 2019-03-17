@@ -1,18 +1,69 @@
 const w2v = require( './w2v' );
 const euDistance = require( 'euclidean-distance' );
 
-module.exports.rwmd = function rwmd( doc1, doc2 ){
+const documentIterator = require( '../documentIterator' );
 
-    doc1.forEach( ( element ) => {
 
-        
+const threshold = 1; // Complete placeholder value
 
-    });
+
+module.exports.rwmd = function rwmd( doc ){
+
+    // Make new document iterator
+    let iter = new documentIterator();
+
+    let output = {
+        similarDocs: []
+    };
+
+    // Keep running through all documents from iterator
+    while( iter.hasNext() ){
+
+        // Pull next document
+        let target = iter.next();
+
+        // Running Total of transport distance
+        let runningTotalDistance = 0;
+
+        doc.forEach( ( element ) => {
+
+            // Lowest cost for sentence
+            let sentenceLowest = NaN;
+
+            target.forEach( ( targetElement ) => {
+
+                let dist = sentenceDistance( element, targetElement );
+
+                if( isNaN( sentenceLowest ) || dist < sentenceLowest ){
+                    sentenceLowest = dist;
+                }
+
+            });
+
+            runningTotalDistance += sentenceLowest;
+
+        });
+
+
+        // If total distance greater than some threshold
+        if( runningTotalDistance >= threshold ){
+
+            // Add to output array
+            output.similarDocs.push( { distance: runningTotalDistance, doc: target } );
+
+        }
+
+    }
+
+    // Return all similar docs found
+    return output;
 
 };
 
 // Find distance of two sentences
-module.exports.sentence = function sentenceDistance( sen1, sen2 ){
+module.exports.sentence = sentenceDistance;
+
+function sentenceDistance( sen1, sen2 ){
 
     // get bag of words
     let bow1 = prep( sen1 );
@@ -138,15 +189,13 @@ module.exports.sentence = function sentenceDistance( sen1, sen2 ){
     console.log( '\n' );
 
     // Normalize score
-    let maxDist = Math.max( bow1RunningTotal, bow2RunningTotal );
-
-    let score = maxDist / bow1.size;
+    let score = Math.max( bow1RunningTotal, bow2RunningTotal );
 
     console.log( `Normalized distance is ${ score }` );
 
     return score;
 
-};
+}
 
 // Prep sentences into Bag of Words in a Map
 function prep( sentence ){

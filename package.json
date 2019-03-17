@@ -5,13 +5,16 @@
   "description": "Web Page",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "npm set python python2.7",
+    "start": "node index.js"
   },
   "author": "Wilson Chau",
   "license": "ISC",
   "dependencies": {
+    "euclidean-distance": "^1.0.0",
     "express": "^4.16.2",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "word2vector": "^2.1.0"
   },
   "devDependencies": {}
 }
