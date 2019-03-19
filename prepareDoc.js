@@ -44,6 +44,7 @@ function sentenceArray(filedoc)
     while(file.hasNext()) // Go through the content of the file
     {
         temp = file.next();
+        sArray[i][j] = temp; 
 
         // Each row of the sArray is a sentence.
         if( temp == "?" || temp == "." || temp == "!")
@@ -53,7 +54,7 @@ function sentenceArray(filedoc)
         }
         else
         {
-            sArray[i][j] = temp; // 
+           
             j++;
             
         }
