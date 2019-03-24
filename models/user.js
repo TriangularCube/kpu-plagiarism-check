@@ -1,7 +1,16 @@
+// ------------------------------ user.js ------------------------------
+
+
+// Declare variables ------------------------------
+
+
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
-// User Schema
+
+// Create User Schema ------------------------------
+
+
 var UserSchema = mongoose.Schema({
   username: {
     type: String,
@@ -11,6 +20,10 @@ var UserSchema = mongoose.Schema({
     type: String
   }
 });
+
+
+// Save User into Schema ------------------------------
+
 
 var User = module.exports = mongoose.model('User', UserSchema);
 
@@ -23,14 +36,26 @@ module.exports.createUser = function(newUser, callback){
   });
 }
 
+
+// function getUserByUsername ------------------------------
+
+
 module.exports.getUserByUsername = function(username, callback){
   var query = {username: username};
   User.findOne(query, callback);
 }
 
+
+// function getUserByID ------------------------------
+
+
 module.exports.getUserById = function(id, callback){
   User.findById(id, callback);
 }
+
+
+// function comparePassword ------------------------------
+
 
 module.exports.comparePassword = function(candidatePassword, hash, callback){
   bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
@@ -38,3 +63,6 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
       callback(null, isMatch);
   });
 }
+
+
+// ------------------------------ END ------------------------------
