@@ -1,17 +1,41 @@
 {
-  "name": "Express",
+  "name": "KPU-PDW",
   "version": "1.0.0",
   "private": true,
-  "description": "Web Page",
-  "main": "index.js",
+  "description": "KPU Plagiarism Detection Web App",
+  "main": "app.js",
   "scripts": {
     "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "Wilson Chau",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2",
-    "express-handlebars": "^3.0.0"
+    "bcryptjs": "*",
+    "body-parser": "^1.18.3",
+    "connect-flash": "*",
+    "cookie-parser": "^1.4.4",
+    "crypto": "^1.0.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "flash": "^1.1.0",
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^3.0.0",
+    "mongodb": "*",
+    "mongoose": "^5.4.19",
+    "multer": "^1.4.1",
+    "multer-gridfs-storage": "^3.2.3",
+    "passport": "^0.4.0",
+    "passport-http": "*",
+    "passport-local": "*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }

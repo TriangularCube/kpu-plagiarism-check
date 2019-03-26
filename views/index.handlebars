@@ -1,0 +1,41 @@
+<div class="page-header">
+
+  <section class="jumbtotron1">
+    <div class="container">
+      <center>
+        <img src="/img/kpu.jpg" alt="Kwantlen Polytechnic University" class="kpu-img">
+      </center>
+    </div>
+  </secton>
+
+  <section class="jumbotron2 text-center">
+    <div class="container">
+      <h1 class="jumbotron2-heading">Plagiarism Detection Tool</h1>
+      <br/>
+      <br/>
+      <br/>
+      <p>Click on <i>Browse...</i> to upload a document.</p>
+      <p>Once a document has been uploaded, click on the <i>Submit</i> button.</p>
+      <p class="lead text-muted"><i></i></p>
+    </div>
+  </section>
+
+</div>
+
+<div>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="upload">
+      <center>
+        <input type="file" name="file" accept=".doc,.docx,application/msword" class="btn btn-light" id="upload">
+      </center>
+    </div>
+
+    <div class="submit">
+      <center>
+        <form action="/users/result">
+          <input type="submit" name="submit" value="Submit" class="btn btn-primary" onclick="window.location.href='/users/result'" id="submit-button-home">
+        </form>
+      </center>
+    </div>
+  </form>
+</div>
