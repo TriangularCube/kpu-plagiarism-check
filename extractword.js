@@ -6,16 +6,16 @@ var fs = require('fs');
     @Output: filedoc // the content of file in array format.
 */
 
-function extractwrod()
+function extractwrod(filename)
 {
   fs.readFile('filename', function(err, data) {
     if(err) throw err;
 
     // store the content of a file into an array.
     var filedoc = data.toString().split("\n");
-    for(i in array) {
-        console.log(array[i]);
+    for(i in filedoc) {
+        console.log(filedoc[i]); // you can comman this out.
     }
   });
-  return filedoc;
+  return filedoc; // an array
 }
