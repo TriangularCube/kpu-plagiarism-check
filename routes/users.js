@@ -1,28 +1,32 @@
+// ------------------------------ users.js ------------------------------
+
+
+// Declare variables ------------------------------
+
+
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 
-// Home
 
-/*
-router.get('/home', function(req, res){
-  res.render('home');
-});
-*/
+// Get register page (NOT FOR PUBLIC USE) ------------------------------
 
-// Register
+
 router.get('/register', function(req, res){
   res.render('register');
 });
 
-// Register user
+
+// Register user ------------------------------
+
+
 router.post('/register', function(req, res){
   var username = req.body.username;
   var password = req.body.password;
 
-  // Validation
+  // Validate username and password
   req.checkBody('username', 'Username is required').notEmpty();
   req.checkBody('password', 'Password is required').notEmpty();
 
@@ -49,12 +53,18 @@ router.post('/register', function(req, res){
   //res.render('register');
 });
 
-// Login
+
+// Get login page ------------------------------
+
+
 router.get('/login', function(req, res){
   res.render('login');
 });
 
-// Result
+
+// Get result page ------------------------------
+
+
 router.get('/result', verifyAuthenticated, function(req, res){
   res.render('result');
 });
@@ -69,7 +79,10 @@ function verifyAuthenticated(req, res, next){
   }
 }
 
-// Retrieved from http://www.passportjs.org/docs/username-password/ ------------------------------
+
+// Use Passport (Retrieved from http://www.passportjs.org/docs/username-password/) ------------------------------
+
+
 passport.use(new LocalStrategy(
   function(username, password, done) {
     User.getUserByUsername(username, function(err, user){
@@ -101,12 +114,20 @@ passport.deserializeUser(function(id, done) {
 
 });
 
+
+// Get Login ------------------------------
+
+
 router.post('/login',
   passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login', failureFlash: true}),
   function(req, res) {
     res.redirect('/');
   }
 );
+
+
+// Get logout ------------------------------
+
 
 router.get('/logout', function(req, res){
   req.logout();
@@ -115,3 +136,6 @@ router.get('/logout', function(req, res){
 });
 
 module.exports = router;
+
+
+// ------------------------------ END ------------------------------

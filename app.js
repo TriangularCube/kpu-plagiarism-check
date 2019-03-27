@@ -23,6 +23,14 @@ const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
 const crypto = require('crypto');
 
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
+
+// Connect to MongoDB ------------------------------
+
+
 mongoose.connect('mongodb://localhost/KPU-PDW', { useNewUrlParser: true });
 var db = mongoose.connection;﻿
 
@@ -41,7 +49,7 @@ conn.once('open', () => {
 })
 
 
-// Create storage engine ------------------------------
+// Create GridFS storage engine ------------------------------
 
 
 const storage = new GridFsStorage({
@@ -53,8 +61,10 @@ const storage = new GridFsStorage({
           return reject(err);
         }
         const filename = file.originalname;
+        const username = req.user.username;
         const fileInfo = {
           filename: filename,
+          alises: username,
           bucketName: 'uploads'
         };
         resolve(fileInfo);
@@ -111,7 +121,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
-// Passport Initialize ------------------------------
+// Initialize Passport ------------------------------
 
 
 app.use(passport.initialize());
@@ -170,7 +180,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 // Display all files in DB ------------------------------
 
-
+/*
 app.get('/files', (req, res) => {
   gfs.files.find().toArray((err, files) => {
     if(!files || files.length === 0) {
@@ -181,6 +191,7 @@ app.get('/files', (req, res) => {
     return res.json(files);
   });
 });
+*/
 
 // Set port ------------------------------
 
