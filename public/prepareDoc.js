@@ -42,9 +42,9 @@ function sentenceArray(filedoc)
     var temp;
     var i = 0; // row number
     var j = 0; // col number
-    while(file.hasNext()) // Go through the content of the file
+    while(filedoc.hasNext()) // Go through the content of the file
     {
-        temp = file.next();
+        temp = filedoc.next();
         sArray[i][j] = temp; 
 
         // Each row of the sArray is a sentence.
