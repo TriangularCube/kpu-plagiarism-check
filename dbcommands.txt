@@ -1,0 +1,15 @@
+cd C:\Program Files\MongoDB\Server\4.0\bin  //change directory to the MongoDB bin folder
+
+mongo  //Connect to MongoDB server
+
+show dbs  //Displays list of all databases
+
+use "db"  //Connects to the database in parenthesis
+
+show collections  //Displays list of collections within the database
+
+db.users.find()  //Find all objects within the collection; In this case, collection being "users" and objects are the usernames and passwords
+
+db.uploads.files.find()
+
+db.uploads.files.remove( {filename: "test2.docx" } )  //Deletes object in the collection with a filename of test2
