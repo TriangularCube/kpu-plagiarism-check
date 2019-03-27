@@ -17,32 +17,34 @@ module.exports = function cosineSimilarity(docWords, compareWords)
 	//Populate Word Frequency lists
 	for (sentence in docWords)
 	{
-		docWords[sentence] = docWords[sentence].split(" ");
+		strNoSpecialChars = docWords[sentence].replace(/[^a-zA-Z0-9 ]/g, "");
+        docWords[sentence] = strNoSpecialChars.split(" ");
 		for (word in docWords[sentence])
 		{
-			if (isNaN(docWordFrequency[docWords[word]]))
+			if (isNaN(docWordFrequency[docWords[sentence][word]]))
 			{
-				docWordFrequency[docWords[word]] = 1;
+				docWordFrequency[docWords[sentence][word]] = 1;
 			}
 			else
 			{
-				docWordFrequency[docWords[word]]++;
+				docWordFrequency[docWords[sentence][word]]++;
 			}
 		}
 	}
 
 	for (sentence in compareWords)
 	{
-		compareWords[sentence] = compareWords[sentence].split(" ");
+    	strNoSpecialChars = compareWords[sentence].replace(/[^a-zA-Z0-9 ]/g, "");
+		compareWords[sentence] = strNoSpecialChars.split(" ");
 		for (word in compareWords[sentence])
 		{
-			if (isNaN(compareWordFrequency[compareWords[word]]))
+			if (isNaN(compareWordFrequency[compareWords[sentence][word]]))
 			{
-				compareWordFrequency[compareWords[word]] = 1;
+				compareWordFrequency[compareWords[sentence][word]] = 1;
 			}
 			else
 			{
-				compareWordFrequency[compareWords[word]]++;
+				compareWordFrequency[compareWords[sentence][word]]++;
 			}
 		}
 	}
@@ -79,6 +81,5 @@ module.exports = function cosineSimilarity(docWords, compareWords)
 			similarity += docWordFrequency[word] * compareWordFrequency[word];
 		}
 	}
-	
 	return similarity;
 }
