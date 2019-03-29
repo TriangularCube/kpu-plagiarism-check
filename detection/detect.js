@@ -2,7 +2,9 @@ const iterator = require( './documentIterator' );
 
 const levenshtein = require( './levenshtein/levenshtein' );
 
-function detect( document ){
+const rwmd = require( './rwmd/rwmd' );
+
+module.exports = function detect( document ){
 
     const iter = new iterator();
 
@@ -13,6 +15,8 @@ function detect( document ){
         let target = iter.next();
 
         let levScore = levenshtein( document, target );
+
+        let rwmdScore = rwmd( document, target );
 
         // TODO other scoring algorithms
 

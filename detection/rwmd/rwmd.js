@@ -1,62 +1,36 @@
 const w2v = require( './w2v' );
 const euDistance = require( 'euclidean-distance' );
 
-const documentIterator = require( '../documentIterator' );
 
 
-const threshold = 1; // Complete placeholder value
+module.exports.rwmd = function rwmd( doc, target ){
 
 
-module.exports.rwmd = function rwmd( doc ){
+    // Running Total of transport distance
+    let runningTotalDistance = 0;
 
-    // Make new document iterator
-    let iter = new documentIterator();
+    doc.forEach( ( element ) => {
 
-    let output = {
-        similarDocs: []
-    };
+        // Lowest cost for sentence
+        let sentenceLowest = NaN;
 
-    // Keep running through all documents from iterator
-    while( iter.hasNext() ){
+        target.forEach( ( targetElement ) => {
 
-        // Pull next document
-        let target = iter.next();
+            let dist = sentenceDistance( element, targetElement );
 
-        // Running Total of transport distance
-        let runningTotalDistance = 0;
-
-        doc.forEach( ( element ) => {
-
-            // Lowest cost for sentence
-            let sentenceLowest = NaN;
-
-            target.forEach( ( targetElement ) => {
-
-                let dist = sentenceDistance( element, targetElement );
-
-                if( isNaN( sentenceLowest ) || dist < sentenceLowest ){
-                    sentenceLowest = dist;
-                }
-
-            });
-
-            runningTotalDistance += sentenceLowest;
+            if( isNaN( sentenceLowest ) || dist < sentenceLowest ){
+                sentenceLowest = dist;
+            }
 
         });
 
+        runningTotalDistance += sentenceLowest;
 
-        // If total distance greater than some threshold
-        if( runningTotalDistance >= threshold ){
+    });
 
-            // Add to output array
-            output.similarDocs.push( { distance: runningTotalDistance, doc: target } );
 
-        }
-
-    }
-
-    // Return all similar docs found
-    return output;
+    // Return Result
+    return runningTotalDistance;
 
 };
 
