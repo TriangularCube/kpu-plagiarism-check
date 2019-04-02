@@ -205,3 +205,15 @@ app.listen(app.get('port'), function(){
 
 
 // ------------------------------ END ------------------------------
+
+let extract = require( './detection/extractword' );
+let prepare = require( './detection/prepareDoc' );
+
+let file1 = extract( 'test1.txt' );
+let prepf1 = prepare( file1 );
+
+let det = require( './detection/detect' );
+
+console.log( det( prepf1 ) );
+
+

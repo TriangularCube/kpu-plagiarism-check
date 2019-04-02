@@ -5,6 +5,8 @@ module.exports = function process( inputDoc, targetDoc ){
 
     let score = 0;
 
+    //console.log( targetDoc );
+
     inputDoc.forEach( (element) => {
 
         let lowestScore = NaN;
@@ -50,6 +52,8 @@ function levenshtein( a, b ){
 
     for( i = 1; i <= b.length; i++ ){
         for( j = 1; j <= a.length; j++ ){
+
+           // console.log( b );
 
             if( b.charAt( i - 1 ) === a.charAt( j -1 ) ){
                 matrix[i][j] = matrix[i-1][j-1];

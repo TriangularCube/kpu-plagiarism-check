@@ -13,11 +13,13 @@ module.exports = function diceSimilarity(docWords, compareWords)
 	//list[word] = frequency
 	var docWordFrequency = new Object();
 	var compareWordFrequency = new Object();
-	
+
 	//Populate Word Frequency lists
 	for (sentence in docWords)
 	{
-		docWords[sentence] = docWords[sentence].split(" ");
+		//console.log( docWords[sentence] );
+		strNoSpecialChars = docWords[sentence].replace(/[^a-zA-Z0-9 ]/g, "");
+        docWords[sentence] = strNoSpecialChars.split(" ");
 		for (word in docWords[sentence])
 		{
 			if (isNaN(docWordFrequency[docWords[sentence][word]]))
@@ -33,7 +35,9 @@ module.exports = function diceSimilarity(docWords, compareWords)
 
 	for (sentence in compareWords)
 	{
-		compareWords[sentence] = compareWords[sentence].split(" ");
+		console.log( compareWords[sentence] );
+		strNoSpecialChars = compareWords[sentence].replace(/[^a-zA-Z0-9 ]/g, "");
+		compareWords[sentence] = strNoSpecialChars.split(" ");
 		for (word in compareWords[sentence])
 		{
 			if (isNaN(compareWordFrequency[compareWords[sentence][word]]))
