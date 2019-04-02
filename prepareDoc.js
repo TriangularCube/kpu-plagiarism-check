@@ -25,11 +25,12 @@ function prepareDoc(filedoc) {
     return uncommonArr; // return the prepared file content as a 2D array
 }
 
+
 /**
-    This function will store the word document into a 2D array.
+    This function will store the word document into an array.
     {
         {Hello!},
-        {Today, is, a, good, day, to, write, codes.},
+        {Today is a, good, day, to, write, codes.},
         {I, hope, you, will, have, fine.}
     }
     Input: filedoc //content of word document.
@@ -41,9 +42,9 @@ function sentenceArray(filedoc)
     var temp;
     var i = 0; // row number
     var j = 0; // col number
-    while(file.hasNext()) // Go through the content of the file
+    while(filedoc.hasNext()) // Go through the content of the file
     {
-        temp = file.next();
+        temp = filedoc.next();
         sArray[i][j] = temp; 
 
         // Each row of the sArray is a sentence.
@@ -70,7 +71,7 @@ function sentenceArray(filedoc)
 * Then it compares the file doc with common words array.
 * It will remove any common words in file doc.
 * @ Input: filedoc[][], common[]
-* @ Output: uncommonArr 
+* @ Output: uncommonArr /1D array, contains strings
 */
 function removeComentWords(filedoc) {
     // an array of common words.
@@ -92,9 +93,28 @@ function removeComentWords(filedoc) {
             uncommonArr.push(word);
         }
     }
+    uncommonArr = toString(uncommonArr);
     return uncommonArr; // return the prepared file array.
 }
 
+/** This function will change uncomonArr 2D array into an array of strings.
+    Format: {string1, string2,string3,...}
+    input: 2D array
+    output 1D array
+*/
+function toString(uncommonArr){
+    var sArray = uncommonArr;
+    var temp = [];
+    for(i = 0; i < sArray.length; i++)
+    {   
+        temp[i] = '';
+        for(j = 0; j <sArray[i].length; j ++)
+        {
+            temp[i] = temp[i] + ' ' + sArray[i][j];
+        }
+    }
+    return temp;
+}
 
 
 
