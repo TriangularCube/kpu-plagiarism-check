@@ -17,7 +17,7 @@ module.exports = class documentIterator{
     hasNext(){
         // TODO Should return true if DB has more documents
 
-        return !read;
+        return !this.read;
     }
 
     next(){

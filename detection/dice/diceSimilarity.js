@@ -13,10 +13,11 @@ module.exports = function diceSimilarity(docWords, compareWords)
 	//list[word] = frequency
 	var docWordFrequency = new Object();
 	var compareWordFrequency = new Object();
-	
+
 	//Populate Word Frequency lists
 	for (sentence in docWords)
 	{
+		//console.log( docWords[sentence] );
 		strNoSpecialChars = docWords[sentence].replace(/[^a-zA-Z0-9 ]/g, "");
         docWords[sentence] = strNoSpecialChars.split(" ");
 		for (word in docWords[sentence])
@@ -34,6 +35,7 @@ module.exports = function diceSimilarity(docWords, compareWords)
 
 	for (sentence in compareWords)
 	{
+		console.log( compareWords[sentence] );
 		strNoSpecialChars = compareWords[sentence].replace(/[^a-zA-Z0-9 ]/g, "");
 		compareWords[sentence] = strNoSpecialChars.split(" ");
 		for (word in compareWords[sentence])

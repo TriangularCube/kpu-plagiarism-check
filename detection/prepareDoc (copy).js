@@ -15,20 +15,14 @@ module.exports = function prepareDoc(filedoc) {
 
     commonArr = sentenceArray(filedoc); // store file content into a 2D array.
 
-    //console.log( commonArr );
-
     //removeComentWords(commonArr);
     for(i = 0; i < commonArr.length; i++)
     {
         uncommonArr[i] = removeComentWords(commonArr[i]);
     }
 
-    uncommonArr = toString( uncommonArr );
-
-;
-
     return uncommonArr; // return the prepared file content as a 2D array
-};
+}
 
 
 /**
@@ -43,58 +37,54 @@ module.exports = function prepareDoc(filedoc) {
  */
 function sentenceArray(filedoc)
 {
-
     let sArray = [];
-    let x = 0;
+    let temp;
+    var i = 0; // row number
+    var j = 0; // col number
 
-    filedoc.forEach( (element) => {
-
-        for( let i = 0; i < element.length; i++ ){
-
-            let temp = element.charAt( i );
-            if( temp === "?" || temp === "." || temp === "!"){
-                x++;
-                continue;
-            }
-            if( typeof sArray[x] === 'undefined' ){
-                sArray[x] = '';
-            }
-            sArray[x] = sArray[x] + element.charAt( i );
-        }
-
-    });
-
-
-    // let sArray = [];
-    // let temp;
-    // var i = 0; // row number
-    // var j = 0; // col number
+    // let x = 0;
     //
+    // for( let i = 0; i < filedoc.length; i++ ){
     //
-    // // while(filedoc.hasNext()) // Go through the content of the file
-    // // {
-    // for( let x = 0; x < filedoc.length; x++ ){
+    //     for( let j = 0; j < filedoc[i].length; j++ ){
     //
-    //     temp = filedoc[x];
-    //     if( typeof sArray[i] === 'undefined' ){
-    //         sArray[i] = [];
-    //     }
-    //     sArray[i].push( temp );
-    //
-    //     // Each row of the sArray is a sentence.
-    //     if( temp == "?" || temp == "." || temp == "!")
-    //     {
-    //         i++; // move to next row at the end of each sentence
-    //         j= 0; // reset col number to 0 at the end of each sentence
-    //     }
-    //     else
-    //     {
-    //
-    //         j++;
+    //         temp = filedoc[i].charAt(j);
+    //         if( temp === "?" || temp === "." || temp === "!" ){
+    //             x++;
+    //             continue;
+    //         }
+    //         sArray[x] = sArray[x] + temp.toString();
     //
     //     }
     //
     // }
+    //
+    // console.log( sArray);
+
+    // while(filedoc.hasNext()) // Go through the content of the file
+    // {
+    for( let x = 0; x < filedoc.length; x++ ){
+
+        temp = filedoc[x];
+        if( typeof sArray[i] === 'undefined' ){
+            sArray[i] = [];
+        }
+        sArray[i].push( temp );
+
+        // Each row of the sArray is a sentence.
+        if( temp == "?" || temp == "." || temp == "!")
+        {
+            i++; // move to next row at the end of each sentence
+            j= 0; // reset col number to 0 at the end of each sentence
+        }
+        else
+        {
+
+            j++;
+
+        }
+
+    }
 
     // }
     return sArray;
@@ -114,7 +104,7 @@ function removeComentWords(filedoc) {
     // an array of common words.
     let common = "the, it is, we all, a, an, by, to, you, me, he, she, they, we, how, it, i, are, to, for, of";
 
-    var wordArr = filedoc.toString().match(/\w+/g),
+    var wordArr = filedoc.match(/\w+/g),
         commonObj = {},
         uncommonArr = [],
         word, i;
@@ -130,7 +120,7 @@ function removeComentWords(filedoc) {
             uncommonArr.push(word);
         }
     }
-    //uncommonArr = toString(uncommonArr);
+    uncommonArr = toString(uncommonArr);
     return uncommonArr; // return the prepared file array.
 }
 
@@ -141,7 +131,6 @@ function removeComentWords(filedoc) {
  */
 function toString(uncommonArr){
     var sArray = uncommonArr;
-    //console.log( uncommonArr );
     var temp = [];
     for(i = 0; i < sArray.length; i++)
     {
@@ -151,9 +140,10 @@ function toString(uncommonArr){
             temp[i] = temp[i] + ' ' + sArray[i][j];
         }
     }
-    //console.log( temp );
     return temp;
 }
+
+
 
 
 

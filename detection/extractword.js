@@ -10,14 +10,13 @@ module.exports = function extractwrod(filename)
 {
 
     let filedoc = [];
-    fs.readFile(filename, function(err, data) {
-      if(err) throw err;
+    let res = fs.readFileSync(filename);
 
-      // store the content of a file into an array.
-      filedoc = data.toString().split("\n");
-      for(i in filedoc) {
-          console.log(filedoc[i]); // you can comman this out.
-      }
-    });
+    filedoc = res.toString().split('\n');
+
+    for(i in filedoc) {
+        console.log(filedoc[i]); // you can comman this out.
+    }
+
     return filedoc; // an array
 };
