@@ -205,3 +205,7 @@ app.listen(app.get('port'), function(){
 
 
 // ------------------------------ END ------------------------------
+
+let iter = require( './detection/documentIterator' );
+
+let f = new iter().next();
