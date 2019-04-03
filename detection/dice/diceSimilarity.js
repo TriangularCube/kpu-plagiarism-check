@@ -35,7 +35,7 @@ module.exports = function diceSimilarity(docWords, compareWords)
 
 	for (sentence in compareWords)
 	{
-		console.log( compareWords[sentence] );
+		// console.log( compareWords[sentence] );
 		strNoSpecialChars = compareWords[sentence].replace(/[^a-zA-Z0-9 ]/g, "");
 		compareWords[sentence] = strNoSpecialChars.split(" ");
 		for (word in compareWords[sentence])
@@ -61,7 +61,7 @@ module.exports = function diceSimilarity(docWords, compareWords)
 				similarity += 2;
 			}
     }
-    
+
     //Count total words used among both documents
     var totalWords = 0;
     for (word in docWordFrequency)
@@ -72,7 +72,7 @@ module.exports = function diceSimilarity(docWords, compareWords)
     {
     	totalWords += compareWordFrequency[word];
     }
-    
+
     similarity /= totalWords;
 	return similarity;
 }

@@ -15,7 +15,7 @@ module.exports = function extractwrod(filename)
     filedoc = res.toString().split('\n');
 
     for(i in filedoc) {
-        console.log(filedoc[i]); // you can comman this out.
+        // console.log(filedoc[i]); // you can comman this out.
     }
 
     return filedoc; // an array

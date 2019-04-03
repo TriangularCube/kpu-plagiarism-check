@@ -1,3 +1,7 @@
+//This script manually uploads a single file to the MongoDB "fs" collection
+//In var docPath = path.join(__dirname, 'testCompare1.docx');, change 'testCompare1.docx' to a different file name
+//Make sure you also change the filename it is saved as in var writestream!
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 

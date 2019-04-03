@@ -170,11 +170,32 @@ app.use('/', routes);
 app.use('/users', users);
 
 
+// Extract and prepare file ------------------------------
+
+
+let extract = require( './detection/extractword' );
+let prepare = require( './detection/prepareDoc' );
+
+let file1 = extract( 'test1.txt' );
+let prepf1 = prepare( file1 );
+
+let det = require( './detection/detect' );
+
+var algorithmValues = JSON.stringify( det( prepf1 ) [0] );
+
+// console.log( det( prepf1 ) );
+
+
 // Upload files to DB ------------------------------
 
+var final = {
+  value: algorithmValues
+};
 
 app.post('/upload', upload.single('file'), (req, res) => {
-  res.redirect('/users/result');
+  res.render('result', {final: final});
+  displayValues = console.log(final);
+  displayValues;
 });
 
 
@@ -205,15 +226,3 @@ app.listen(app.get('port'), function(){
 
 
 // ------------------------------ END ------------------------------
-
-let extract = require( './detection/extractword' );
-let prepare = require( './detection/prepareDoc' );
-
-let file1 = extract( 'test1.txt' );
-let prepf1 = prepare( file1 );
-
-let det = require( './detection/detect' );
-
-console.log( det( prepf1 ) );
-
-
