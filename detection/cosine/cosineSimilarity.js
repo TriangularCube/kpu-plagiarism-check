@@ -53,7 +53,7 @@ module.exports = function cosineSimilarity(docWords, compareWords)
 	var normalizeDoc = 0;
 	for (word in docWordFrequency)
 	{
-		normalizeDoc += docWordFrequency[word]**2;
+		normalizeDoc += docWordFrequency[word]*2;
 	}
 	normalizeDoc = Math.sqrt(normalizeDoc);
     for (word in docWordFrequency)
@@ -64,7 +64,7 @@ module.exports = function cosineSimilarity(docWords, compareWords)
 	var normalizeCompare = 0;
 	for (word in compareWordFrequency)
 	{
-		normalizeCompare += compareWordFrequency[word]**2;
+		normalizeCompare += compareWordFrequency[word]*2;
 	}
 	normalizeCompare = Math.sqrt(normalizeCompare);
     for (word in compareWordFrequency)
