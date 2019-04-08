@@ -3,6 +3,8 @@ const iterator = require( './documentIterator' );
 const levenshtein = require( './levenshtein/levenshtein' );
 const cosine = require( './cosine/cosineSimilarity' );
 const dice = require( './dice/diceSimilarity' );
+const rwmd = require( './rwmd/rwmd' ).rwmd;
+
 
 module.exports = function detect( document ){
 
@@ -16,15 +18,17 @@ module.exports = function detect( document ){
 
         let target = iter.next();
 
-        let levScore = levenshtein( document, target );
+        let levScore = levenshtein( [...document], [...target] );
 
         let cosScore = cosine( [...document], [...target] );
 
         let diceScore = dice( [...document], [...target] );
 
+        let rScore = rwmd( [...document], [...target] );
+
         // TODO other scoring algorithms
 
-        score.push( { lev: levScore, cosine: cosScore, dice: diceScore } )
+        score.push( { lev: levScore, cosine: cosScore, dice: diceScore, rwmd: rScore } )
 
     }
 
