@@ -28,6 +28,10 @@ a:hover {
   background-color: rgba(152,0,46,1);
 }
 
+.med-block {
+  margin-bottom: 100px;
+}
+
 .kpu-img {
   margin-top: 50px;
   margin-bottom: -50px;

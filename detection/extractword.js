@@ -4,19 +4,17 @@ var fs = require('fs');
     This function will store the content of a file into an array.
     @Input: filename
     @Output: filedoc // the content of file in array format.
+
 */
 
-module.exports = function extractwrod(filename)
+module.exports = function extractwrod(file)
 {
 
     let filedoc = [];
-    let res = fs.readFileSync(filename);
+    let res = fs.readFileSync(file);
 
-    filedoc = res.toString().split('\n');
+    filedoc = res.toString().toLowerCase().split('\n');
 
-    for(i in filedoc) {
-        console.log(filedoc[i]); // you can comman this out.
-    }
 
-    return filedoc; // an array
+    return filedoc.filter(Boolean); // an array
 };

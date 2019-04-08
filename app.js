@@ -170,11 +170,47 @@ app.use('/', routes);
 app.use('/users', users);
 
 
+// Extract and prepare file ------------------------------
+
+
+let extract = require( './detection/extractword' );
+let prepare = require( './detection/prepareDoc' );
+let det = require( './detection/detect' );
+
+// let file1 = extract( 'test1.txt' );
+// let prepf1 = prepare( file1 );
+
+// var algorithmValues = JSON.stringify( det( prepf1 ) [0] );
+
+// // console.log( det( prepf1 ) );
+
+
 // Upload files to DB ------------------------------
 
+var fs = require('fs');
+app.post('/upload', upload.single('avatar'), (req, res) => {
+  let file1 = extract(req.file.filename);
+  // let filedoc = [];
+  // let resi = fs.readFileSync(req.file.filename);
 
-app.post('/upload', upload.single('file'), (req, res) => {
-  res.redirect('/users/result');
+  let prepf1 = prepare( file1 );
+  //console.log(prepf1);
+
+  var algorithmValues = JSON.stringify( det( prepf1 ) [0] );
+
+  // console.log( det( prepf1 ) );
+
+  // Upload files to DB ------------------------------
+
+  var final = {
+    value: algorithmValues
+  };
+
+  // Return algorithm results ------------------------------
+
+  res.render('result', {final: final});
+  displayValues = console.log(final);
+  displayValues;
 });
 
 
@@ -205,15 +241,3 @@ app.listen(app.get('port'), function(){
 
 
 // ------------------------------ END ------------------------------
-
-let extract = require( './detection/extractword' );
-let prepare = require( './detection/prepareDoc' );
-
-let file1 = extract( 'test1.txt' );
-let prepf1 = prepare( file1 );
-
-let det = require( './detection/detect' );
-
-console.log( det( prepf1 ) );
-
-
