@@ -6,8 +6,6 @@ const dice = require( './dice/diceSimilarity' );
 
 module.exports = function detect( document ){
 
-module.exports = function detect( document ){
-
     const iter = new iterator();
 
     // TODO process document
